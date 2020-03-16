@@ -1,5 +1,6 @@
 package com.denis.sweater.domain;
 
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -55,6 +56,7 @@ public class User implements UserDetails {
     }
 
     public void setUsername(String username) {
+
         this.username = username;
     }
 
@@ -62,6 +64,13 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
     }
+
+
+    public boolean isAdmin (){
+        return roles.contains(Role.ADMIN);
+    }
+
+
 
     public String getPassword() {
         return password;
